@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MyBank Demo Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-brand">
+
+            <div class="brand-circle"></div>
+
+            <div>
+                <strong>MyBank</strong>
+                <small>Demo Banking</small>
+            </div>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <button
+                class="menu-item active"
+                data-page="dashboard"
+            >
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+
+            <button
+                class="menu-item"
+                data-page="account"
+            >
+                <span>◉</span>
+                Account
+            </button>
+
+
+            <button
+                class="menu-item"
+                data-page="transfers"
+            >
+                <span>⇄</span>
+                Transfers
+            </button>
+
+
+            <button
+                class="menu-item"
+                data-page="deposit-checks"
+            >
+                <span>▣</span>
+                Deposit Checks
+            </button>
+
+
+            <button
+                class="menu-item"
+                data-page="bill-pay"
+            >
+                <span>▤</span>
+                Bill Pay
+            </button>
+
+
+            <button
+                class="menu-item"
+                data-page="mobile-deposit"
+            >
+                <span>▧</span>
+                Mobile Deposit
+            </button>
+
+
+            <button
+                class="menu-item"
+                data-page="statements"
+            >
+                <span>▤</span>
+                Statements
+            </button>
+
+
+            <button
+                class="menu-item"
+                data-page="support"
+            >
+                <span>?</span>
+                Support
+            </button>
+
+        </nav>
+
+
+        <button class="logout-button" id="logoutButton">
+            Log Out
+        </button>
+
+    </aside>
+
+
+    <!-- MAIN AREA -->
+
+    <main class="main">
+
+        <header class="topbar">
+
+            <button
+                class="hamburger"
+                id="menuButton"
+            >
+                ☰
+            </button>
+
+            <div>
+                <h2 id="pageTitle">Dashboard</h2>
+            </div>
+
+            <div class="user-area">
+                <span>Demo User</span>
+
+                <div class="avatar">
+                    DU
+                </div>
+            </div>
+
+        </header>
+
+
+        <section class="content">
+
+
+            <!-- DASHBOARD -->
+
+            <div
+                class="page active-page"
+                id="dashboard"
+            >
+
+                <div class="welcome">
+                    <div class="welcome-check">✓</div>
+
+                    <div>
+                        <strong>
+                            You're welcome, Demo User
+                        </strong>
+
+                        <p>
+                            Here's your demo account overview.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="balance-card">
+
+                    <p>Available Balance</p>
+
+                    <h1 id="balance">
+                        $150,000.00
+                    </h1>
+
+                    <span>
+                        Demo Deposit Account
+                    </span>
+
+                </div>
+
+
+                <div class="cards-grid">
+
+                    <div class="info-card">
+
+                        <h3>Account</h3>
+
+                        <p>
+                            Demo checking account
+                        </p>
+
+                        <button
+                            onclick="showPage('account')"
+                        >
+                            View Account
+                        </button>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>Transfers</h3>
+
+                        <p>
+                            Manage demo transfers
+                        </p>
+
+                        <button
+                            onclick="showPage('transfers')"
+                        >
+                            Make Transfer
+                        </button>
+
+                    </div>
+
+
+                    <div class="info-card">
+
+                        <h3>Statements</h3>
+
+                        <p>
+                            View demo statements
+                        </p>
+
+                        <button
+                            onclick="showPage('statements')"
+                        >
+                            View Statements
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="recent-card">
+
+                    <h2>Recent Activity</h2>
+
+                    <div id="transactions">
+                        Loading...
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACCOUNT -->
+
+            <div class="page" id="account">
+
+                <div class="page-card">
+
+                    <h1>Account</h1>
+
+                    <p>
+                        Your demo account information.
+                    </p>
+
+                    <div class="account-row">
+                        <span>Account Name</span>
+                        <strong>Demo User</strong>
+                    </div>
+
+                    <div class="account-row">
+                        <span>Account Type</span>
+                        <strong>Demo Deposit Account</strong>
+                    </div>
+
+                    <div class="account-row">
+                        <span>Available Balance</span>
+                        <strong>$150,000.00</strong>
+                    </div>
+
+                    <div class="account-row">
+                        <span>Account Status</span>
+                        <strong>Demo Active</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TRANSFERS -->
+
+            <div class="page" id="transfers">
+
+                <div class="page-card">
+
+                    <h1>Transfers</h1>
+
+                    <p>
+                        Demo transfer interface.
+                    </p>
+
+                    <form class="demo-form">
+
+                        <label>Amount</label>
+
+                        <input
+                            type="number"
+                            placeholder="Enter demo amount"
+                        >
+
+                        <label>Recipient</label>
+
+                        <input
+                            type="text"
+                            placeholder="Demo recipient"
+                        >
+
+                        <button
+                            type="button"
+                            onclick="demoAction('Transfer')"
+                        >
+                            Continue
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+
+            <!-- DEPOSIT CHECKS -->
+
+            <div class="page" id="deposit-checks">
+
+                <div class="page-card">
+
+                    <h1>Deposit Checks</h1>
+
+                    <p>
+                        This is a demonstration screen for
+                        check deposits.
+                    </p>
+
+                    <button
+                        class="primary-button"
+                        onclick="demoAction('Check deposit')"
+                    >
+                        Start Demo Deposit
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- BILL PAY -->
+
+            <div class="page" id="bill-pay">
+
+                <div class="page-card">
+
+                    <h1>Bill Pay</h1>
+
+                    <p>
+                        Manage your demo bills from this section.
+                    </p>
+
+                    <button
+                        class="primary-button"
+                        onclick="demoAction('Bill payment')"
+                    >
+                        Add Demo Bill
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- MOBILE DEPOSIT -->
+
+            <div class="page" id="mobile-deposit">
+
+                <div class="page-card">
+
+                    <h1>Mobile Deposit</h1>
+
+                    <p>
+                        Demo mobile deposit functionality.
+                    </p>
+
+                    <div class="upload-box">
+
+                        <span>📷</span>
+
+                        <h3>
+                            Add demo check image
+                        </h3>
+
+                        <p>
+                            No real financial documents are processed.
+                        </p>
+
+                        <button
+                            class="primary-button"
+                            onclick="demoAction('Mobile deposit')"
+                        >
+                            Choose Demo Image
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATEMENTS -->
+
+            <div class="page" id="statements">
+
+                <div class="page-card">
+
+                    <h1>Statements</h1>
+
+                    <p>
+                        Demo account statements.
+                    </p>
+
+                    <div class="statement">
+
+                        <div>
+                            <strong>
+                                September 2026
+                            </strong>
+
+                            <small>
+                                Demo statement
+                            </small>
+                        </div>
+
+                        <button
+                            onclick="demoAction('Statement')"
+                        >
+                            View
+                        </button>
+
+                    </div>
+
+
+                    <div class="statement">
+
+                        <div>
+                            <strong>
+                                August 2026
+                            </strong>
+
+                            <small>
+                                Demo statement
+                            </small>
+                        </div>
+
+                        <button
+                            onclick="demoAction('Statement')"
+                        >
+                            View
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SUPPORT -->
+
+            <div class="page" id="support">
+
+                <div class="page-card">
+
+                    <h1>Support</h1>
+
+                    <p>
+                        How can we help with this demo?
+                    </p>
+
+                    <div class="support-box">
+
+                        <h3>Demo Support</h3>
+
+                        <p>
+                            This website is a demonstration
+                            banking interface.
+                        </p>
+
+                        <button
+                            class="primary-button"
+                            onclick="demoAction('Support request')"
+                        >
+                            Contact Demo Support
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MyBank
+         Demo - Login</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="login-body">
+
+    <div class="login-container">
+
+        <div class="brand">
+            <div class="brand-circle"></div>
+            <div>
+                <h1>MyBank</h1>
+                <span>Digital Banking Demo</span>
+            </div>
+        </div>
+
+        <div class="login-card">
+
+            <h2>Welcome back</h2>
+
+            <p class="login-subtitle">
+                Sign in to your demo account
+            </p>
+
+            <form id="loginForm">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter demo username"
+                    required
+                >
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Enter demo password"
+                    required
+                >
+
+                <button type="submit" class="login-button">
+                    Sign In
+                </button>
+
+                <div id="loginMessage"></div>
+
+            </form>
+
+            <div class="demo-info">
+                <strong>Demo access</strong>
+                <br>
+                Username: demo
+                <br>
+                Password: demo123
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
