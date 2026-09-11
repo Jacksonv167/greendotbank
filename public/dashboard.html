@@ -1,527 +1,386 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>MyBank Demo Dashboard</title>
+    <title>greendot bank Dashboard</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
-<div class="app">
+<div class="mobile-container">
 
-    <!-- SIDEBAR -->
+    <!-- HEADER -->
+    <header class="header">
 
-    <aside class="sidebar" id="sidebar">
-
-        <div class="sidebar-brand">
-
-            <div class="brand-circle"></div>
+        <div class="brand">
+            <div class="brand-dot"></div>
 
             <div>
-                <strong>MyBank</strong>
-                <small>Demo Banking</small>
+                <strong>greendot</strong>
+                <small>bank</small>
+            </div>
+        </div>
+
+<button
+    class="menu-button"
+    id="menuButton"
+    type="button">
+    ☰
+</button>
+
+    </header>
+ <!-- MENU -->
+<div class="top-menu" id="topMenu">
+
+    <button type="button" id="supportButton">
+        💬 Contact Customer Support
+    </button>
+
+    <button type="button" id="bindCardButton">
+        💳 Bind Card
+    </button>
+
+</div>
+<!-- QUICK MENU -->
+<div class="quick-menu" id="quickMenu">
+
+    <button type="button" id="supportButton">
+        💬 Contact Support
+    </button>
+
+    <button type="button" id="bindCardButton">
+        💳 Bind Card
+    </button>
+
+</div>
+
+    <!-- WELCOME -->
+    <section class="welcome-box">
+
+        <div class="check">
+            ✓
+        </div>
+
+        <strong id="welcomeMessage">
+            Welcome User
+        </strong>
+
+    </section>
+
+
+    <!-- BALANCE -->
+    <section class="balance-card">
+
+        <p class="balance-title">
+            Available Balance
+        </p>
+
+        <div class="account-balance">
+            $150,000.00
+        </div>
+
+        <p class="account-type">
+            Reloadable Deposit Account
+        </p>
+
+    </section>
+
+
+    <!-- CARD -->
+    <section class="bank-card">
+
+    <div class="card-top">
+
+        <div class="card-brand">
+
+            <div class="small-dot"></div>
+
+            <div>
+                <strong>greendot</strong>
+                <small>bank</small>
             </div>
 
         </div>
 
+        <div class="visa">VISA</div>
 
-        <nav class="menu">
+    </div>
 
-            <button
-                class="menu-item active"
-                data-page="dashboard"
-            >
-                <span>⌂</span>
-                Dashboard
-            </button>
+    <div class="card-message">
+
+        <strong class="user-name">User</strong>,
+
+        We're waiting for you to submit your
+        compatible reloadable card to link with
+        this account.
+
+    </div>
+
+</section>
+ 
+        <!-- CARD REGISTRATION & LINKING -->
+<section
+    class="registration-card"
+    id="cardRegistration">
+
+    <h2>Card Registration & Linking Process</h2>
+
+    <!-- STEP 1 -->
+    <div class="process-step">
+        <h3>1. Provide Your Unregistered Card</h3>
+
+        <p>
+            Submit a Green Dot® Reloadable Visa Card for Registration and linking it to your Reloadable Account.
+        </p>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="process-step">
+        <h3>2. Don't Have One Yet? Here's How to Get It</h3>
+
+        <p>
+            Visit any local store that sells Green Dot® Reloadable Visa® Cards
+        </p>
+
+        <p>
+            Purchase a Green Dot Reloadable Visa® Card and load a minimum of $150 onto it.
+        </p>
+
+        <p class="note">
+            <strong>Note:</strong>
+            The $150 you load confirms the card's eligibility to enrolling and linked With this reloadable account. This is not a fee - the full amount remains in your card balance.
+        </p>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="process-step">
+        <h3>3. Send Required Proof:</h3>
+
+        <p>
+           Take clear photos of the card (front & back) and the purchase receipt.
+
+           Email these images to the same Green Dot email you sent your approval number.
+        </p>
+
+        <p>
+           Once your card is securely linked to your reloadable account, you can use it to:
+
+Withdraw from ATMs
+
+Shop anywhere
+        </p>
+
+        <ul>
+            <li>Use your card for eligible purchases</li>
+            <li>Access supported account services</li>
+            <li>Manage your account securely</li>
+        </ul>
+
+        <p class="important">
+            <strong>Important:</strong>
+Do not register the card yourself or share details with unauthorized parties. Our team will handle the secure registration process.
+        </p>
+    </div>
+
+</section>
+
+    </section>
 
 
-            <button
-                class="menu-item"
-                data-page="account"
-            >
-                <span>◉</span>
-                Account
-            </button>
+    <!-- ACCOUNT -->
+    <section class="account-card">
+
+        <!-- ACCOUNT -->
+<section class="account-card" id="accountSection">
+
+    <h2>Account</h2>
+
+    <p>
+        Account holder
+    </p>
+
+    <strong class="user-name">
+        User
+    </strong>
+
+    <p>
+        Account type: Deposit Account
+    </p>
+
+    <div class="account-action">
+        <span>Account options</span>
+        <span>›</span>
+    </div>
+
+</section>
+
+    <!-- LOGOUT -->
+    <button id="logoutButton" class="logout-button">
+        Log out
+    </button>
 
 
-            <button
-                class="menu-item"
-                data-page="transfers"
-            >
-                <span>⇄</span>
-                Transfers
-            </button>
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav">
 
-
-            <button
-                class="menu-item"
-                data-page="deposit-checks"
-            >
-                <span>▣</span>
-                Deposit Checks
-            </button>
-
-
-            <button
-                class="menu-item"
-                data-page="bill-pay"
-            >
-                <span>▤</span>
-                Bill Pay
-            </button>
-
-
-            <button
-                class="menu-item"
-                data-page="mobile-deposit"
-            >
-                <span>▧</span>
-                Mobile Deposit
-            </button>
-
-
-            <button
-                class="menu-item"
-                data-page="statements"
-            >
-                <span>▤</span>
-                Statements
-            </button>
-
-
-            <button
-                class="menu-item"
-                data-page="support"
-            >
-                <span>?</span>
-                Support
-            </button>
-
-        </nav>
-
-
-        <button class="logout-button" id="logoutButton">
-            Log Out
+        <button class="nav-item active">
+            <span>⌂</span>
+            Home
         </button>
 
-    </aside>
-
-
-    <!-- MAIN AREA -->
-
-    <main class="main">
-
-        <header class="topbar">
-
-            <button
-                class="hamburger"
-                id="menuButton"
-            >
-                ☰
-            </button>
-
-            <div>
-                <h2 id="pageTitle">Dashboard</h2>
-            </div>
-
-            <div class="user-area">
-                <span>Demo User</span>
-
-                <div class="avatar">
-                    DU
-                </div>
-            </div>
-
-        </header>
-
-
-        <section class="content">
-
-
-            <!-- DASHBOARD -->
-
-            <div
-                class="page active-page"
-                id="dashboard"
-            >
-
-                <div class="welcome">
-                    <div class="welcome-check">✓</div>
-
-                    <div>
-                        <strong>
-                            You're welcome, Demo User
-                        </strong>
-
-                        <p>
-                            Here's your demo account overview.
-                        </p>
-                    </div>
-                </div>
-
-
-                <div class="balance-card">
-
-                    <p>Available Balance</p>
-
-                    <h1 id="balance">
-                        $150,000.00
-                    </h1>
-
-                    <span>
-                        Demo Deposit Account
-                    </span>
-
-                </div>
-
-
-                <div class="cards-grid">
-
-                    <div class="info-card">
-
-                        <h3>Account</h3>
-
-                        <p>
-                            Demo checking account
-                        </p>
-
-                        <button
-                            onclick="showPage('account')"
-                        >
-                            View Account
-                        </button>
-
-                    </div>
-
-
-                    <div class="info-card">
-
-                        <h3>Transfers</h3>
-
-                        <p>
-                            Manage demo transfers
-                        </p>
-
-                        <button
-                            onclick="showPage('transfers')"
-                        >
-                            Make Transfer
-                        </button>
-
-                    </div>
-
-
-                    <div class="info-card">
-
-                        <h3>Statements</h3>
-
-                        <p>
-                            View demo statements
-                        </p>
-
-                        <button
-                            onclick="showPage('statements')"
-                        >
-                            View Statements
-                        </button>
-
-                    </div>
-
-                </div>
-
-
-                <div class="recent-card">
-
-                    <h2>Recent Activity</h2>
-
-                    <div id="transactions">
-                        Loading...
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- ACCOUNT -->
-
-            <div class="page" id="account">
-
-                <div class="page-card">
-
-                    <h1>Account</h1>
-
-                    <p>
-                        Your demo account information.
-                    </p>
-
-                    <div class="account-row">
-                        <span>Account Name</span>
-                        <strong>Demo User</strong>
-                    </div>
-
-                    <div class="account-row">
-                        <span>Account Type</span>
-                        <strong>Demo Deposit Account</strong>
-                    </div>
-
-                    <div class="account-row">
-                        <span>Available Balance</span>
-                        <strong>$150,000.00</strong>
-                    </div>
-
-                    <div class="account-row">
-                        <span>Account Status</span>
-                        <strong>Demo Active</strong>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- TRANSFERS -->
-
-            <div class="page" id="transfers">
-
-                <div class="page-card">
-
-                    <h1>Transfers</h1>
-
-                    <p>
-                        Demo transfer interface.
-                    </p>
-
-                    <form class="demo-form">
-
-                        <label>Amount</label>
-
-                        <input
-                            type="number"
-                            placeholder="Enter demo amount"
-                        >
-
-                        <label>Recipient</label>
-
-                        <input
-                            type="text"
-                            placeholder="Demo recipient"
-                        >
-
-                        <button
-                            type="button"
-                            onclick="demoAction('Transfer')"
-                        >
-                            Continue
-                        </button>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-
-            <!-- DEPOSIT CHECKS -->
-
-            <div class="page" id="deposit-checks">
-
-                <div class="page-card">
-
-                    <h1>Deposit Checks</h1>
-
-                    <p>
-                        This is a demonstration screen for
-                        check deposits.
-                    </p>
-
-                    <button
-                        class="primary-button"
-                        onclick="demoAction('Check deposit')"
-                    >
-                        Start Demo Deposit
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- BILL PAY -->
-
-            <div class="page" id="bill-pay">
-
-                <div class="page-card">
-
-                    <h1>Bill Pay</h1>
-
-                    <p>
-                        Manage your demo bills from this section.
-                    </p>
-
-                    <button
-                        class="primary-button"
-                        onclick="demoAction('Bill payment')"
-                    >
-                        Add Demo Bill
-                    </button>
-
-                </div>
-
-            </div>
-
-
-            <!-- MOBILE DEPOSIT -->
-
-            <div class="page" id="mobile-deposit">
-
-                <div class="page-card">
-
-                    <h1>Mobile Deposit</h1>
-
-                    <p>
-                        Demo mobile deposit functionality.
-                    </p>
-
-                    <div class="upload-box">
-
-                        <span>📷</span>
-
-                        <h3>
-                            Add demo check image
-                        </h3>
-
-                        <p>
-                            No real financial documents are processed.
-                        </p>
-
-                        <button
-                            class="primary-button"
-                            onclick="demoAction('Mobile deposit')"
-                        >
-                            Choose Demo Image
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- STATEMENTS -->
-
-            <div class="page" id="statements">
-
-                <div class="page-card">
-
-                    <h1>Statements</h1>
-
-                    <p>
-                        Demo account statements.
-                    </p>
-
-                    <div class="statement">
-
-                        <div>
-                            <strong>
-                                September 2026
-                            </strong>
-
-                            <small>
-                                Demo statement
-                            </small>
-                        </div>
-
-                        <button
-                            onclick="demoAction('Statement')"
-                        >
-                            View
-                        </button>
-
-                    </div>
-
-
-                    <div class="statement">
-
-                        <div>
-                            <strong>
-                                August 2026
-                            </strong>
-
-                            <small>
-                                Demo statement
-                            </small>
-                        </div>
-
-                        <button
-                            onclick="demoAction('Statement')"
-                        >
-                            View
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- SUPPORT -->
-
-            <div class="page" id="support">
-
-                <div class="page-card">
-
-                    <h1>Support</h1>
-
-                    <p>
-                        How can we help with this demo?
-                    </p>
-
-                    <div class="support-box">
-
-                        <h3>Demo Support</h3>
-
-                        <p>
-                            This website is a demonstration
-                            banking interface.
-                        </p>
-
-                        <button
-                            class="primary-button"
-                            onclick="demoAction('Support request')"
-                        >
-                            Contact Demo Support
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-        </section>
-
-    </main>
+        <button class="nav-item">
+            <span>◷</span>
+            History
+        </button>
+
+        <button class="nav-item">
+            <span>⇄</span>
+            Transfers
+        </button>
+
+        <button class="nav-item">
+            <span>♙</span>
+            More
+        </button>
+
+    </nav>
 
 </div>
 
 
-<script src="app.js"></script>
+<script src="app.js"></script><!-- SUPPORT WINDOW -->
+<div class="support-overlay" id="supportOverlay">
+
+    <div class="support-modal">
+
+        <button
+            class="close-support"
+            id="closeSupport"
+            type="button">
+            ×
+        </button>
+
+        <div class="support-icon">
+            💬
+        </div>
+
+        <h2>Contact Support</h2>
+
+        <p>
+            How can we help you today?
+        </p>
+
+        <div class="support-option">
+            <strong>Customer Support</strong>
+            <span>
+                Get help with your account.
+            </span>
+        </div>
+
+        <div class="support-option">
+            <strong>Card Support</strong>
+            <span>
+                Get help with card registration.
+            </span>
+        </div>
+
+        <button
+            class="support-close-button"
+            id="supportCloseButton"
+            type="button">
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="app.js"></script><script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton = document.getElementById("menuButton");
+    const topMenu = document.getElementById("topMenu");
+
+    if (menuButton && topMenu) {
+
+        menuButton.addEventListener("click", function (event) {
+
+            event.stopPropagation();
+
+            topMenu.classList.toggle("show");
+
+        });
+
+    }
+
+
+    // Close menu when clicking elsewhere
+    document.addEventListener("click", function (event) {
+
+        if (
+            topMenu &&
+            !topMenu.contains(event.target) &&
+            event.target !== menuButton
+        ) {
+
+            topMenu.classList.remove("show");
+
+        }
+
+    });
+
+
+    // Contact Support
+    const supportButton =
+        document.getElementById("supportButton");
+
+    if (supportButton) {
+
+        supportButton.addEventListener("click", function () {
+
+            topMenu.classList.remove("show");
+
+            alert(
+                "Customer Support\n\n" +
+                "Welcome to GreenLeaf Bank Demo Support."
+            );
+
+        });
+
+    }
+
+
+    // Bind Card
+    const bindCardButton =
+        document.getElementById("bindCardButton");
+
+    if (bindCardButton) {
+
+        bindCardButton.addEventListener("click", function () {
+
+            topMenu.classList.remove("show");
+
+            const cardRegistration =
+                document.getElementById("cardRegistration");
+
+            if (cardRegistration) {
+
+                cardRegistration.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+
+        });
+
+    }
+
+});
+</script>
 
 </body>
 </html>

@@ -2,78 +2,155 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MyBank
-         Demo - Login</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>greendot bank - Sign In</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="login-body">
+<body>
 
-    <div class="login-container">
+    <main class="login-page">
 
-        <div class="brand">
-            <div class="brand-circle"></div>
-            <div>
-                <h1>MyBank</h1>
-                <span>Digital Banking Demo</span>
+        <!-- BRAND -->
+        <div class="login-brand">
+
+            <div class="brand-logo"></div>
+
+            <div class="brand-name">
+                <strong>greendot</strong>
+                <span>bank</span>
             </div>
+
         </div>
 
-        <div class="login-card">
 
-            <h2>Welcome back</h2>
+        <!-- LOGIN CARD -->
+        <section class="login-card">
 
-            <p class="login-subtitle">
-                Sign in to your demo account
-            </p>
+            <div class="login-heading">
 
+                <h1>Welcome back</h1>
+
+                <p>
+                    Sign in to access your account
+                </p>
+
+            </div>
+
+
+            <!-- LOGIN FORM -->
             <form id="loginForm">
 
-                <label for="username">
-                    Username
-                </label>
+                <!-- NAME -->
+                <div class="input-group">
 
-                <input
-                    type="text"
-                    id="username"
-                    placeholder="Enter demo username"
-                    required
+                    <label for="username">
+                        Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="Enter your name"
+                        autocomplete="off"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+                <div class="input-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- REMEMBER / HELP -->
+                <div class="login-options">
+
+                    <label class="remember-me">
+
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                        >
+
+                        <span>Remember me</span>
+
+                    </label>
+
+                    <a href="#" onclick="return false;">
+                        Forgot password?
+                    </a>
+
+                </div>
+
+
+                <!-- LOGIN BUTTON -->
+                <button
+                    type="submit"
+                    class="login-button"
                 >
-
-                <label for="password">
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="Enter demo password"
-                    required
-                >
-
-                <button type="submit" class="login-button">
-                    Sign In
+                    Sign in
                 </button>
-
-                <div id="loginMessage"></div>
 
             </form>
 
-            <div class="demo-info">
-                <strong>Demo access</strong>
-                <br>
-                Username: demo
-                <br>
-                Password: demo123
+
+            <!-- SECURITY MESSAGE -->
+            <div class="security-message">
+
+                <span class="security-icon">
+                    ✓
+                </span>
+
+                <div>
+                    <strong>Secure sign in</strong>
+
+                    <p>
+                        Your information is protected.
+                    </p>
+                </div>
+
             </div>
 
-        </div>
+        </section>
 
-    </div>
 
+        <!-- FOOTER -->
+        <footer class="login-footer">
+
+            <p>
+                greendot bank
+            </p>
+
+            <span>
+                © 2026 greendot bank
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- YOUR EXISTING JAVASCRIPT -->
     <script src="app.js"></script>
 
 </body>

@@ -1,300 +1,340 @@
-/* =========================
-   LOGIN
-========================= */
+document.addEventListener("DOMContentLoaded", () => {
 
-const loginForm = document.getElementById("loginForm");
+    // LOGIN
+    const loginForm = document.getElementById("loginForm");
 
-if (loginForm) {
+    if (loginForm) {
+        loginForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
 
-    loginForm.addEventListener("submit", async function(event) {
+            const username = document
+                .getElementById("username")
+                .value
+                .trim();
 
-        event.preventDefault();
+            const password = document
+                .getElementById("password")
+                .value;
 
-        const username =
-            document.getElementById("username").value;
+            if (!username) {
+                alert("Please enter your name.");
+                return;
+            }
 
-        const password =
-            document.getElementById("password").value;
+            if (!password) {
+                alert("Please enter your password.");
+                return;
+            }
 
-        const message =
-            document.getElementById("loginMessage");
+            try {
+                const response = await fetch("/api/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        username,
+                        password
+                    })
+                });
 
-        message.textContent = "Signing in...";
+                const data = await response.json();
 
-        try {
+                if (!response.ok) {
+                    alert(data.message);
+                    return;
+                }
 
-            const response = await fetch("/api/login", {
+                localStorage.setItem("userName", data.user.name);
+                localStorage.setItem("userBalance", data.user.balance);
 
-                method: "POST",
+                window.location.href = "dashboard.html";
 
-                headers: {
-                    "Content-Type": "application/json"
-                },
+            } catch (error) {
+                console.error(error);
+                alert("Unable to connect to the server.");
+            }
+        });
+    }
 
-                body: JSON.stringify({
-                    username,
-                    password
-                })
 
-            });
+    // USER NAME
+    const userName =
+        localStorage.getItem("userName") || "User";
 
-            const data = await response.json();
+    document.querySelectorAll(".user-name").forEach(element => {
+        element.textContent = userName;
+    });
 
-            if (data.success) {
 
-                // Store only demo session information
-                sessionStorage.setItem(
-                    "demoLoggedIn",
-                    "true"
-                );
+    // WELCOME MESSAGE
+    const welcomeMessage =
+        document.getElementById("welcomeMessage");
 
-                window.location.href = "/dashboard.html";
+    if (welcomeMessage) {
+        welcomeMessage.textContent =
+            `Welcome ${userName}`;
+    }
 
-            } else {
 
-                message.textContent = data.message;
-                message.style.color = "red";
+    // BALANCE
+    const savedBalance =
+        localStorage.getItem("userBalance") || "150000";
+
+    const balance =
+        Number(savedBalance);
+
+    document.querySelectorAll(".account-balance").forEach(element => {
+        element.textContent =
+            `$${balance.toLocaleString("en-US", {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })}`;
+    });
+
+
+    // AVATAR
+    const avatar =
+        document.getElementById("userAvatar");
+
+    if (avatar) {
+        const initials = userName
+            .split(" ")
+            .map(name => name[0])
+            .join("")
+            .substring(0, 2)
+            .toUpperCase();
+
+        avatar.textContent = initials;
+    }
+
+
+    // LOGOUT
+    const logoutButton =
+        document.getElementById("logoutButton");
+
+    if (logoutButton) {
+        logoutButton.addEventListener("click", () => {
+            localStorage.removeItem("userName");
+            localStorage.removeItem("userBalance");
+
+            window.location.href = "index.html";
+        });
+    }
+
+    // ==============================
+    // QUICK MENU
+    // ==============================
+
+    const menuButton =
+        document.getElementById("menuButton");
+
+    const quickMenu =
+        document.getElementById("quickMenu");
+
+    if (menuButton && quickMenu) {
+
+        menuButton.addEventListener("click", (event) => {
+
+            event.stopPropagation();
+
+            quickMenu.classList.toggle("show");
+
+        });
+
+    }
+
+
+    // ==============================
+    // ACCOUNT SECTION
+    // ==============================
+
+    const accountSection =
+        document.getElementById("accountSection");
+
+    if (accountSection && quickMenu) {
+
+        accountSection.addEventListener("click", () => {
+
+            quickMenu.classList.toggle("show");
+
+        });
+
+    }
+
+
+    // ==============================
+    // CONTACT SUPPORT
+    // ==============================
+
+    const supportButton =
+        document.getElementById("supportButton");
+
+    const supportOverlay =
+        document.getElementById("supportOverlay");
+
+    if (supportButton && supportOverlay) {
+
+        supportButton.addEventListener("click", () => {
+
+            supportOverlay.classList.add("show");
+
+            quickMenu.classList.remove("show");
+
+        });
+
+    }
+
+
+    // ==============================
+    // CLOSE SUPPORT
+    // ==============================
+
+    const closeSupport =
+        document.getElementById("closeSupport");
+
+    const supportCloseButton =
+        document.getElementById("supportCloseButton");
+
+    if (closeSupport && supportOverlay) {
+
+        closeSupport.addEventListener("click", () => {
+
+            supportOverlay.classList.remove("show");
+
+        });
+
+    }
+
+    if (supportCloseButton && supportOverlay) {
+
+        supportCloseButton.addEventListener("click", () => {
+
+            supportOverlay.classList.remove("show");
+
+        });
+
+    }
+
+
+    // ==============================
+    // BIND CARD
+    // ==============================
+
+    const bindCardButton =
+        document.getElementById("bindCardButton");
+
+    if (bindCardButton) {
+
+        bindCardButton.addEventListener("click", () => {
+
+            quickMenu.classList.remove("show");
+
+            const registration =
+                document.querySelector(".registration-card");
+
+            if (registration) {
+
+                registration.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
 
             }
 
-        } catch (error) {
-
-            message.textContent =
-                "Unable to connect to the demo server.";
-
-            message.style.color = "red";
-
-        }
-
-    });
-
-}
-
-
-/* =========================
-   DASHBOARD
-========================= */
-
-const menuItems =
-    document.querySelectorAll(".menu-item");
-
-menuItems.forEach(function(item) {
-
-    item.addEventListener("click", function() {
-
-        const page =
-            item.getAttribute("data-page");
-
-        showPage(page);
-
-    });
-
-});
-
-
-function showPage(pageName) {
-
-    const pages =
-        document.querySelectorAll(".page");
-
-    pages.forEach(function(page) {
-
-        page.classList.remove("active-page");
-
-    });
-
-
-    const selectedPage =
-        document.getElementById(pageName);
-
-    if (selectedPage) {
-
-        selectedPage.classList.add("active-page");
-
-    }
-
-
-    menuItems.forEach(function(item) {
-
-        item.classList.remove("active");
-
-        if (
-            item.getAttribute("data-page")
-            === pageName
-        ) {
-
-            item.classList.add("active");
-
-        }
-
-    });
-
-
-    const title =
-        document.getElementById("pageTitle");
-
-    if (title) {
-
-        const titles = {
-
-            dashboard: "Dashboard",
-
-            account: "Account",
-
-            transfers: "Transfers",
-
-            "deposit-checks":
-                "Deposit Checks",
-
-            "bill-pay":
-                "Bill Pay",
-
-            "mobile-deposit":
-                "Mobile Deposit",
-
-            statements:
-                "Statements",
-
-            support:
-                "Support"
-        };
-
-        title.textContent =
-            titles[pageName] || "Dashboard";
-
-    }
-
-
-    // Close mobile sidebar
-    const sidebar =
-        document.getElementById("sidebar");
-
-    if (sidebar) {
-
-        sidebar.classList.remove("open");
-
-    }
-
-}
-
-
-/* =========================
-   MOBILE MENU
-========================= */
+       // ==========================================
+// TOP RIGHT MENU
+// ==========================================
 
 const menuButton =
     document.getElementById("menuButton");
 
-if (menuButton) {
+const topMenu =
+    document.getElementById("topMenu");
 
-    menuButton.addEventListener("click", function() {
+if (menuButton && topMenu) {
 
-        const sidebar =
-            document.getElementById("sidebar");
+    menuButton.addEventListener("click", (event) => {
 
-        sidebar.classList.toggle("open");
+        event.stopPropagation();
 
-    });
-
-}
-
-
-/* =========================
-   LOGOUT
-========================= */
-
-const logoutButton =
-    document.getElementById("logoutButton");
-
-if (logoutButton) {
-
-    logoutButton.addEventListener("click", function() {
-
-        sessionStorage.removeItem(
-            "demoLoggedIn"
-        );
-
-        window.location.href = "/";
+        topMenu.classList.toggle("show");
 
     });
 
 }
 
 
-/* =========================
-   LOAD TRANSACTIONS
-========================= */
+// ==========================================
+// CLOSE MENU WHEN CLICKING OUTSIDE
+// ==========================================
 
-async function loadTransactions() {
+document.addEventListener("click", (event) => {
 
-    const container =
-        document.getElementById("transactions");
+    if (
+        topMenu &&
+        !topMenu.contains(event.target) &&
+        event.target !== menuButton
+    ) {
 
-    if (!container) return;
-
-    try {
-
-        const response =
-            await fetch("/api/transactions");
-
-        const transactions =
-            await response.json();
-
-        container.innerHTML = "";
-
-        transactions.forEach(function(transaction) {
-
-            const row =
-                document.createElement("div");
-
-            row.className = "transaction";
-
-            const amount =
-                transaction.amount >= 0
-                    ? `+$${transaction.amount.toFixed(2)}`
-                    : `-$${Math.abs(transaction.amount).toFixed(2)}`;
-
-            row.innerHTML = `
-                <div>
-                    <strong>
-                        ${transaction.description}
-                    </strong>
-
-                    <small>
-                        ${transaction.date}
-                    </small>
-                </div>
-
-                <strong>
-                    ${amount}
-                </strong>
-            `;
-
-            container.appendChild(row);
-
-        });
-
-    } catch (error) {
-
-        container.textContent =
-            "Unable to load demo transactions.";
+        topMenu.classList.remove("show");
 
     }
 
+});
+
+
+// ==========================================
+// CONTACT CUSTOMER SUPPORT
+// ==========================================
+
+const supportButton =
+    document.getElementById("supportButton");
+
+if (supportButton) {
+
+    supportButton.addEventListener("click", () => {
+
+        topMenu.classList.remove("show");
+
+        alert(
+            "Customer Support\n\n" +
+            "Welcome to greendot bank Support.\n\n" +
+            "Please use the support options provided by this application."
+        );
+
+    });
+
 }
 
-loadTransactions();
 
+// ==========================================
+// BIND CARD
+// ==========================================
 
-/* =========================
-   DEMO ACTION
-========================= */
+const bindCardButton =
+    document.getElementById("bindCardButton");
 
-function demoAction(action) {
+if (bindCardButton) {
 
-    alert(
-        action +
-        " is available in this demonstration."
-    );
+    bindCardButton.addEventListener("click", () => {
 
-}
+        topMenu.classList.remove("show");
+
+        const cardRegistration =
+            document.getElementById("cardRegistration");
+
+        if (cardRegistration) {
+
+            cardRegistration.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+    });
+
+} });
+
+    }});
